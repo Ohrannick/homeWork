@@ -1,0 +1,63 @@
+<script>
+
+  //Задание 1. Простые числа
+  function primeNumber (n){
+    var i=2, j=0;
+    if (n <= 1)
+      return "";
+    else {
+      for (i; i<=n; i++){
+        if (n % i == 0) {
+          j++;
+        }
+      }
+      if (j==1){
+        return n;
+      }
+      return "";
+    }
+  }
+
+  var mas = [], count = 0;
+  while (count <= 100){
+    if (!primeNumber(count)=="")
+      mas.push(primeNumber(count));
+    count++;
+  }
+  alert (mas);
+
+
+  //Задание 2 и 3. Подсчет стоимости корзины в зависимости от находящихся в ней товаров
+  var goods = [
+    ["Товар 1", 100, 2],
+    ["Товар 2", 200, 3],
+    ["Товар 3", 300, 1]
+  ];
+
+   function countBasketPrice(m){
+     var s = 0;
+     for(var i=0; i< m.length; i++){
+       s += m[i][1] * m[i][2];
+     }
+     return s;
+   }
+
+   alert("Общая стоимость всех товаров составит " + countBasketPrice(goods));
+
+
+  //Задание 4
+  for (var i=0; i<=10; console.log (i++)){
+  }
+
+
+  //Задание 5
+  for (var i = 1; i <= 20; i++) {
+    for (var j = 0; j < i; j++) {
+      document.write ("x ");
+    }
+    document.write ("<br>");
+  }
+
+
+
+</script>
