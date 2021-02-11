@@ -25,9 +25,6 @@ switch (event) {
         answers.push(event);
         switch (event) {
             case 1: // Второе действие, если во 2 окне ввели 1 то переходим на 4 окно
-                event = doWhile(works.d00, works.d0, works.d1, works.d2);
-                answers.push(event);
-                break;
             case 2: // Второе действие   Если ввели 2 то также переходим на 4 окно
                 event = doWhile(works.d00, works.d0, works.d1, works.d2);
                 answers.push(event);
@@ -43,9 +40,6 @@ switch (event) {
         answers.push(event);
         switch (event) {
             case 1: // Второе действие
-                event = doWhile(works.d00, works.d0, works.d1, works.d2);
-                answers.push(event);
-                break;
             case 2: // Второе действие
                 event = doWhile(works.d00, works.d0, works.d1, works.d2);
                 answers.push(event);
@@ -63,16 +57,10 @@ switch (event) {
         alert('Ошибка');
 }
 
-if (answers.length == 3){
-    alert("На первый вопрос вы дали ответ " + answers[0]);
-    alert("На второй вопрос вы дали ответ " + answers[1]);
-    alert("На третий вопрос вы дали ответ " + answers[2]);
-} else if (answers.length == 2){
-    alert("На первый вопрос вы дали ответ " + answers[0]);
-    alert("На второй вопрос вы дали ответ " + answers[1]); 
-} else {
-    alert("На первый вопрос вы дали ответ " + answers[0]);
+for (i=0; i<answers.length; i++){
+    alert("На " + (i+1) + "-й вопрос вы дали ответ: " + answers[i]);
 }
+
 
 alert('Спасибо за игру');
 
