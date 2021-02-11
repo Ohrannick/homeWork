@@ -1,0 +1,37 @@
+<script>
+    
+// Задание 1
+    
+    function Number(ed,dec,hundred){
+        this.ed = ed;
+        this.dec = dec;
+        this.hundred = hundred;
+        this.show = function(){
+            console.log("В данном числе сотен - "+this.hundred+", десятков - "+this.dec+", единиц - " + this.ed);
+        }
+    }
+    
+    function masInNumber(num){
+        if (num.length == 3){
+            hundred = num[0];
+            dec = num[1];
+            ed = num[2];
+        } else if (num.length == 2){
+            dec = num[0];
+            ed = num[1];
+        } else if (num.length == 1){
+            ed = num[0];
+        } else {
+            return num1 = new Number("","","");
+        }
+        return num1 = new Number(ed,dec,hundred);
+    }
+    
+    var num = [], ed=0, dec=0, hundred=0, num1;
+    num = prompt("Введите число от 0 до 999")
+//    num = (Math.random() * 100).toFixed(0); // в интервале от 0 до 1000
+    masInNumber(num)
+    console.log(num);
+    num1.show();
+    
+</script>
