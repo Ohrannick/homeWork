@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ChessTable</title>
+</head>
+<body>
+    <h1 style="text-align: center">Шахматная доска</h1>
+<script>
+    //textAlign='center' verticalAlign='center'
+    var table = "<table style='margin: auto; border-collapse: collapse;'>";
+    var chessArray = [
+        { id: 'A8', chessFig: "&#9820" }, /* черная ладья */
+        { id: 'B8', chessFig: "&#9822" }, /* черный конь */
+        { id: 'C8', chessFig: "&#9821" }, /* черный слон */
+        { id: 'D8', chessFig: "&#9819" }, /* черная королева */
+        { id: 'E8', chessFig: "&#9818" }, /* черный король */
+        { id: 'F8', chessFig: "&#9821" }, /* черный слон */
+        { id: 'G8', chessFig: "&#9822" }, /* черный конь */
+        { id: 'H8', chessFig: "&#9820" }, /* черная ладья */
+        { id: 'A7', chessFig: "&#9823" }, /* черная пешка */
+        { id: 'B7', chessFig: "&#9823" }, /* черная пешка */
+        { id: 'C7', chessFig: "&#9823" }, /* черная пешка */
+        { id: 'D7', chessFig: "&#9823" }, /* черная пешка */
+        { id: 'E7', chessFig: "&#9823" }, /* черная пешка */
+        { id: 'F7', chessFig: "&#9823" }, /* черная пешка */
+        { id: 'G7', chessFig: "&#9823" }, /* черная пешка */
+        { id: 'H7', chessFig: "&#9823" }, /* черная пешка */
+        { id: 'A2', chessFig: "&#9817" }, /* белая пешка */
+        { id: 'B2', chessFig: "&#9817" }, /* белая пешка */
+        { id: 'C2', chessFig: "&#9817" }, /* белая пешка */
+        { id: 'D2', chessFig: "&#9817" }, /* белая пешка */
+        { id: 'E2', chessFig: "&#9817" }, /* белая пешка */
+        { id: 'F2', chessFig: "&#9817" }, /* белая пешка */
+        { id: 'G2', chessFig: "&#9817" }, /* белая пешка */
+        { id: 'H2', chessFig: "&#9817" }, /* белая пешка */
+        { id: 'A1', chessFig: "&#9814" }, /* белая ладья */
+        { id: 'B1', chessFig: "&#9816" }, /* белый конь */
+        { id: 'C1', chessFig: "&#9815" }, /* белый слон */
+        { id: 'D1', chessFig: "&#9813" }, /* белая королева */
+        { id: 'E1', chessFig: "&#9812" }, /* белый король */
+        { id: 'F1', chessFig: "&#9815" }, /* белый слон */
+        { id: 'G1', chessFig: "&#9816" }, /* белый конь */
+        { id: 'H1', chessFig: "&#9814" }, /* белая ладья */
+    ];
+
+    function chessColor(bg, num, color, deg, bd, fs) {
+        return "<td style='border:" + bd + "; background:" + bg + "; color:" + color + "; height: 50px; width: 50px; text-align: center; vertical-align: middle; font-size:" + fs + "; transform: rotate(" + deg + "deg)'>" + num + "</td>"
+    }
+
+    var numStr = ["A", "B", "C", "D", "E", "F", "G", "H"];
+    var tr = 10, td, color, bg, chessNum, chessFig, fs;//счетчик строк
+    while (tr > 0) {
+        td = 0;//счетчик столбцов
+        while (td < 10) {
+            if ((td > 0 && td < 9) && ((tr > 7 && tr < 10) || (tr < 4 && tr > 1))) {
+                chessNum = numStr[td - 1] + (tr - 1);
+                var user = chessArray.find(item => item.id == chessNum);
+                chessNum = user.chessFig;
+            } else if ((tr == 10 && (td > 0 && td <= 8)) || (tr == 1 && (td > 0 && td <= 8))) {
+                chessNum = numStr[td - 1];
+            } else if ((td == 0 && (tr >= 2 && tr <= 9)) || td == 9 && (tr >= 2 && tr <= 9)) {
+                chessNum = (tr - 1);
+            } else {
+                chessNum = "";
+            }
+
+            if (td == 0 || tr == 1) {
+                table += chessColor("white", chessNum, "darkblue", "0", "0", "20px");
+                td++;
+            } else if (td == 9 || tr == 10) {
+                table += chessColor("white", chessNum, "darkblue", "180", "0", "20px");
+                td++;
+            } else {
+                switch (tr % 2) {
+                    case 0:
+                        bg = td % 2 == 0 ? "#F5DEB3" : "#8B4513";
+                        table += chessColor(bg, chessNum, "black", "0", "1px solid", "35px");
+                        td++;
+                        break;
+                    default:
+                        bg = td % 2 == 0 ? "#8B4513" : "#F5DEB3";
+                        table += chessColor(bg, chessNum, "black", "0", "1px solid", "35px");
+                        td++;
+                }
+            }
+        }
+        table += "</tr>";
+        tr--;
+    }
+    table += "</table>";
+    document.write(table);
+</script>
+    
+</body>

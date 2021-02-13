@@ -1,0 +1,19 @@
+body {
+    text-align: center
+    }
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 35px;
+    font-family: monospace;
+    border-spacing: 0px;
+}
