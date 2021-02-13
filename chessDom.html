@@ -24,12 +24,18 @@
         var tr = 10, td, trNew, tdNew, chessNum;
         var table = document.createElement("table");
 
+        function createTr(klass) {
+            tdNew = document.createElement("td");
+            table.append(tdNew);
+            tdNew.innerHTML = chessNum;
+            tdNew.classList.toggle(klass);
+        }
+
         while (tr > 0) {
             td = 0;//счетчик столбцов
             while (td < 10) {
                 if ((td > 0 && td < 9) && ((tr > 7 && tr < 10) || (tr < 4 && tr > 1))) {
-                    chessNum = numStr[td - 1] + (tr - 1);
-                    chessNum = chessArray[chessNum];
+                    chessNum = chessArray[numStr[td - 1] + (tr - 1)];
                 } else if ((tr == 10 && (td > 0 && td <= 8)) || (tr == 1 && (td > 0 && td <= 8))) {
                     chessNum = numStr[td - 1];
                 } else if ((td == 0 && (tr >= 2 && tr <= 9)) || td == 9 && (tr >= 2 && tr <= 9)) {
@@ -39,31 +45,19 @@
                 }
 
                 if (td == 0 || tr == 1) {
-                    tdNew = document.createElement("td");
-                    table.append(tdNew);
-                    tdNew.innerHTML = chessNum;
-                    tdNew.classList.toggle("num"); // присваиваем класс данной клетке
+                    createTr("num");
                     td++;
                 } else if (td == 9 || tr == 10) {
-                    tdNew = document.createElement("td");
-                    table.append(tdNew);
-                    tdNew.innerHTML = chessNum;
-                    tdNew.classList.toggle("numRorate");  // присваиваем класс данной клетке
+                    createTr("numRorate");
                     td++;
                 } else {
                     switch (tr % 2) {
                         case 0:
-                            tdNew = document.createElement("td");
-                            table.append(tdNew);
-                            tdNew.innerHTML = chessNum;
-                            td % 2 == 0 ? tdNew.classList.toggle("white") : tdNew.classList.toggle("black");
+                            createTr(td % 2 == 0 ? "white" : "black");
                             td++;
                             break;
                         default:
-                            tdNew = document.createElement("td");
-                            table.append(tdNew);
-                            tdNew.innerHTML = chessNum;
-                            td % 2 == 0 ? tdNew.classList.toggle("black") : tdNew.classList.toggle("white");
+                            createTr(td % 2 == 0 ? "black" : "white");
                             td++;
                     }
                 }
