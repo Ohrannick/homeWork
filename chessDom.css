@@ -17,3 +17,23 @@ td {
     font-family: monospace;
     border-spacing: 0px;
 }
+
+.num {
+    border: 0;
+    font-size: 20px;
+}
+
+.numRorate {
+    border: 0;
+    transform: rotate(180deg);
+    font-size: 20px;
+}
+
+.white {
+    background: #F5DEB3;
+}
+
+.black {
+    background: #8B4513;
+}
+
