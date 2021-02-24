@@ -1,4 +1,4 @@
-// Глобальные переменные:                            
+// Глобальные переменные:                           
 var FIELD_SIZE_X = 20;//строки
 var FIELD_SIZE_Y = 20;//столбцы
 var SNAKE_SPEED = 200; // Интервал между перемещениями змейки
@@ -110,19 +110,19 @@ function move() {
 
     // Определяем новую точку
     if (direction == 'x-') {
-        coord_x = coord_x == 0 ? 20 : coord_x;
+        coord_x = coord_x == 0 ? FIELD_SIZE_X : coord_x;
         new_unit = document.querySelector('.cell-' + (coord_y) + '-' + (coord_x - 1));
     }
     else if (direction == 'x+') {
-        coord_x = coord_x == 19 ? -1 : coord_x;
+        coord_x = coord_x == FIELD_SIZE_X-1 ? -1 : coord_x;
         new_unit = document.querySelector('.cell-' + (coord_y) + '-' + (coord_x + 1));
     }
     else if (direction == 'y+') {
-        coord_y = coord_y == 0 ? 20 : coord_y;
+        coord_y = coord_y == 0 ? FIELD_SIZE_Y : coord_y;
         new_unit = document.querySelector('.cell-' + (coord_y - 1) + '-' + (coord_x));
     }
     else if (direction == 'y-') {
-        coord_y = coord_y == 19 ? -1 : coord_y;
+        coord_y = coord_y == FIELD_SIZE_X-1 ? -1 : coord_y;
         new_unit = document.querySelector('.cell-' + (coord_y + 1) + '-' + (coord_x));
     }
 
@@ -185,9 +185,9 @@ function haveFood(unit) {
         createFood();
         createBomb();
         score++;
-        var total = document.querySelector(".total");
-        total.innerHTML = "Ваши очки: ";
-        total.insertAdjacentHTML("beforeEnd", score);
+        var total = document.querySelector(".totalScore");
+        total.innerHTML = score;
+//        total.insertAdjacentHTML("beforeEnd", score);
         
     }
     return check;

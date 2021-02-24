@@ -36,10 +36,11 @@ td.game-table-cell{
     margin: 30px auto 0;
     text-align: center;
 }
-
-.total {
+.gameTotal {
     display: inline-block;
     margin: 10px auto;
     padding: 7px 14px;
+    border-radius: 5px;
+    border: 1px solid black;
     font-size: 18px;
 }
